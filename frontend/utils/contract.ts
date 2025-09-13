@@ -1,5 +1,4 @@
 import { ethers } from 'ethers'
-import { useSigner } from 'wagmi'
 
 // Contract ABI - This would be generated from your compiled contract
 const CONTRACT_ABI = [
@@ -28,11 +27,12 @@ export async function createPoll(
   // Simulate contract interaction
   console.log('Creating poll:', { title, options, duration })
   
-  // In a real implementation:
-  // const signer = await getSigner()
-  // const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
-  // const tx = await contract.createPoll(title, options, duration)
-  // await tx.wait()
+      // In a real implementation:
+      // const provider = new ethers.BrowserProvider(window.ethereum)
+      // const signer = await provider.getSigner()
+      // const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
+      // const tx = await contract.createPoll(title, options, duration)
+      // await tx.wait()
   
   // For demo purposes, simulate a delay
   await new Promise(resolve => setTimeout(resolve, 2000))
@@ -43,7 +43,8 @@ export async function castVote(pollId: number, optionIndex: number): Promise<voi
   console.log('Casting vote:', { pollId, optionIndex })
   
   // In a real implementation with FHEVM:
-  // const signer = await getSigner()
+  // const provider = new ethers.BrowserProvider(window.ethereum)
+  // const signer = await provider.getSigner()
   // const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
   // 
   // // Encrypt the vote choice using FHEVM
@@ -61,7 +62,8 @@ export async function endPoll(pollId: number): Promise<void> {
   console.log('Ending poll:', { pollId })
   
   // In a real implementation:
-  // const signer = await getSigner()
+  // const provider = new ethers.BrowserProvider(window.ethereum)
+  // const signer = await provider.getSigner()
   // const contract = new ethers.Contract(CONTRACT_ADDRESS, CONTRACT_ABI, signer)
   // const tx = await contract.endPoll(pollId)
   // await tx.wait()
